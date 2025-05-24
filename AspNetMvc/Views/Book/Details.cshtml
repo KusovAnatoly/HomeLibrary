@@ -1,0 +1,25 @@
+﻿@model AspNetMvc.Models.BookViewModel
+@{
+    ViewData["Title"] = "Карточка книги";
+}
+
+<div class="card mt-4 shadow-sm p-4 border rounded" style="max-width: 700px;">
+    <h2 class="mb-3">@Model.Title</h2>
+
+    <p><strong>Автор:</strong> @Model.AuthorName</p>
+    <p><strong>Издательство:</strong> @(Model.PublisherName ?? "Не указано")</p>
+    <p><strong>Год издания:</strong> @Model.PublishYear</p>
+    <p><strong>ISBN:</strong> @(Model.ISBN ?? "Не указан")</p>
+    <p><strong>Жанры:</strong> @(Model.GenreNames != null && Model.GenreNames.Any() ? string.Join(", ", Model.GenreNames) : "Нет жанров")</p>
+
+    <hr />
+    <h4>Оглавление:</h4>
+    <div class="toc-content border p-3" style="background-color:#f9f9f9;">
+        @Html.Raw(Model.TableOfContentsHtml)
+    </div>
+
+    <div class="mt-4">
+        <a asp-action="Edit" asp-route-id="@Model.BookID" class="btn btn-primary">Редактировать</a>
+        <a asp-action="Index" class="btn btn-secondary">Назад к списку</a>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+﻿@model AspNetMvc.Models.BookViewModel
+@{
+    ViewData["Title"] = "Добавить книгу";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label class="form-label" asp-for="Title">Заголовок</label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+    <div>
+        <label class="form-label" asp-for="AuthorID">Автор</label>
+        <select asp-for="AuthorID" asp-items="Model.Authors" class="form-control"></select>
+    </div>
+    <div>
+        <label class="form-label" asp-for="PublisherID">Издательство</label>
+        <select asp-for="PublisherID" asp-items="Model.Publishers" class="form-control"></select>
+    </div>
+    <div>
+        <label class="form-label" asp-for="PublishYear">Год публикации</label>
+        <input asp-for="PublishYear" class="form-control" />
+    </div>
+    <div>
+        <label class="form-label" asp-for="ISBN"></label>
+        <input asp-for="ISBN" class="form-control" />
+    </div>
+    <div>
+        <label class="form-label">Жанры</label>
+        <select asp-for="SelectedGenreIds" asp-items="Model.Genres" class="form-control" multiple="multiple"></select>
+    </div>
+    <div>
+        <label class="form-label">Оглавление</label>
+        <textarea id="tableOfContents" name="TableOfContentsHtml">@Model.TableOfContentsHtml</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-sm btn-primary">Сохранить</button>
+</form>
+
+@section Scripts {
+    <script src="~/lib/tinymce/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: '#tableOfContents',
+            plugins: 'link lists code',
+            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright | bullist numlist | link | code'
+        });
+    </script>
+}
