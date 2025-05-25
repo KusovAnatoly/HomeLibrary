@@ -1,4 +1,4 @@
-﻿# Home Library ASP.NET MVC App
+# Home Library ASP.NET MVC App
 
 **Home Library** — это веб-приложение для управления книгами, разработанное на ASP.NET MVC. Поддерживает CRUD-операции с использованием редактора TinyMCE.
 
@@ -67,8 +67,8 @@ wwwroot/
 2. Склонируйте репозиторий:
 
    ```bash
-   git clone https://github.com/KusovAnatoly/BookCatalog.git
-   cd BookCatalog
+   git clone https://github.com/KusovAnatoly/HomeLibrary.git
+   cd HomeLibrary
    ```
 
 3. Настройте строку подключения в `appsettings.json`:
